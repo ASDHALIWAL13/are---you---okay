@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just Checking In 🌸</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#fde2e4,#fad2e1,#e2ece9);
+}
+
+.card{
+    width:90%;
+    max-width:450px;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(15px);
+    border-radius:25px;
+    padding:40px;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(0,0,0,.1);
+    animation:fadeUp .8s ease;
+    z-index:2;
+}
+
+h1{
+    color:#ff5d8f;
+    margin-bottom:15px;
+    font-size:2rem;
+}
+
+p{
+    color:#666;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+button{
+    border:none;
+    padding:14px 22px;
+    margin:10px;
+    border-radius:999px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+}
+
+.ok{
+    background:#ffc8dd;
+    color:#444;
+}
+
+.notok{
+    background:#cdb4db;
+    color:white;
+}
+
+button:hover{
+    transform:translateY(-3px) scale(1.03);
+}
+
+#response{
+    margin-top:25px;
+    font-size:17px;
+    color:#555;
+    line-height:1.7;
+    animation:fade .5s;
+}
+
+.heart{
+    position:absolute;
+    color:#ff8fab;
+    font-size:18px;
+    animation:float linear infinite;
+    opacity:.6;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh) rotate(0deg);
+    }
+    to{
+        transform:translateY(-120px) rotate(360deg);
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fade{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+
+<h1>Hey, you 🌸</h1>
+
+<p>
+I don't really have a reason for making this.<br><br>
+I just wanted to check in.<br>
+How are you today?
+</p>
+
+<div id="buttons">
+<button class="ok" onclick="okay()">😊 I'm okay</button>
+<button class="notok" onclick="notOkay()">🥺 Not really</button>
+</div>
+
+<div id="response"></div>
+
+</div>
+
+<script>
+
+function okay(){
+document.getElementById("buttons").style.display="none";
+
+document.getElementById("response").innerHTML=
+`
+💖 I'm really glad to hear that.
+
+I hope today gives you something to smile about,
+even if it's something small.
+
+Take care of yourself, okay?
+`;
+}
+
+function notOkay(){
+document.getElementById("buttons").style.display="none";
+
+document.getElementById("response").innerHTML=
+`
+🫂 I'm sorry today feels a little heavy.
+
+You don't have to pretend everything is fine.
+
+You don't have to reply to this if you don't want to,
+but if you ever need someone to listen,
+I'm here.
+
+One step at a time. 🌷
+`;
+}
+
+// Floating Hearts
+const emojis=["🤍","🌸","💗","✨","💕"];
+
+for(let i=0;i<30;i++){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.animationDuration=(6+Math.random()*8)+"s";
+
+heart.style.fontSize=(14+Math.random()*20)+"px";
+
+heart.style.animationDelay=Math.random()*5+"s";
+
+document.body.appendChild(heart);
+
+}
+
+</script>
+
+</body>
+</html>
